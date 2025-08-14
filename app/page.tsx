@@ -91,9 +91,9 @@ export default function MateTees() {
       </header>
 
       {/* Main Content */}
-      <main className="flex-1 flex items-center justify-center px-6 overflow-y-auto">
-        <div className="max-w-4xl w-full text-center space-y-6">
-          <div className="space-y-4">
+      <main className="flex-1 flex items-center justify-center px-6 pt-8 overflow-y-auto">
+        <div className="max-w-4xl w-full text-center space-y-4">
+          <div className="space-y-3">
             <h1 className="text-4xl md:text-6xl font-serif matetees-text-dark font-bold" style={{ fontFamily: 'Playfair Display', fontWeight: '700' }}>MateTees</h1>
             <p className="text-lg md:text-xl matetees-text-gold font-normal" style={{ fontFamily: 'Source Sans 3', fontWeight: '400' }}>Revolutionizing Golf, globally</p>
           </div>
