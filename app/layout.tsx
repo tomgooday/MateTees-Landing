@@ -20,6 +20,11 @@ export const metadata: Metadata = {
   description:
     "The future of golf social networking. Connect with golfers worldwide, share your rounds, and build lasting friendships.",
   generator: "v0.app",
+  icons: {
+    icon: '/favicon.svg',
+    shortcut: '/favicon.svg',
+    apple: '/favicon.svg',
+  },
 }
 
 export default function RootLayout({
