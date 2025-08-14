@@ -10,6 +10,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import Image from "next/image"
 
 export default function MateTees() {
+  // MateTees landing page with email registration
   const [email, setEmail] = useState("")
   const [optIn, setOptIn] = useState(true)
   const [isSubmitted, setIsSubmitted] = useState(false)
