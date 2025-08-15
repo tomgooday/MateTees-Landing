@@ -21,7 +21,13 @@ export async function POST(request: NextRequest) {
     await sendNotificationEmail(email, optIn)
 
     // Send confirmation email to the user
-    await sendConfirmationEmail(email, optIn)
+    console.log('🔍 Debug: Attempting to send confirmation email to:', email)
+    try {
+      await sendConfirmationEmail(email, optIn)
+      console.log('✅ Debug: Confirmation email sent successfully to:', email)
+    } catch (error) {
+      console.error('❌ Debug: Confirmation email failed for:', email, error)
+    }
 
     return NextResponse.json({ success: true })
   } catch (error) {
