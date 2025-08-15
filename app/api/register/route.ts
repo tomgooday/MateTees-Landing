@@ -52,7 +52,7 @@ async function sendNotificationEmail(userEmail: string, optIn: boolean) {
     // Email content with MateTees branding
     const mailOptions = {
       from: process.env.FROM_EMAIL || 'noreply@matetees.com.au',
-      to: 'info@matetees.com.au',
+      to: 'info@matetees.com.au, matt@matetees.com.au',
       subject: 'New Early Access Member',
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -84,7 +84,7 @@ async function sendNotificationEmail(userEmail: string, optIn: boolean) {
 
     // Send email
     await transporter.sendMail(mailOptions)
-    console.log('✅ Notification email sent to info@matetees.com.au via SendGrid')
+    console.log('✅ Notification email sent to info@matetees.com.au and matt@matetees.com.au via SendGrid')
   } catch (error) {
     console.error('❌ Email notification error:', error)
     // Don't fail the registration if email fails
