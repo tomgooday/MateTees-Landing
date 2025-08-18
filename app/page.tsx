@@ -77,7 +77,7 @@ export default function MateTees() {
       {/* Header */}
       <header className="flex items-center px-8 py-4 border-b border-[var(--matetees-gold)] shadow-xl bg-[var(--matetees-dark-green)] flex-shrink-0">
         <Image 
-          alt="MateTees Logo" 
+          alt="Matees Logo" 
           width={56} 
           height={56} 
           decoding="async" 
@@ -86,43 +86,58 @@ export default function MateTees() {
           style={{ color: 'transparent' }}
         />
         <a href="/dashboard">
-          <span className="text-3xl font-bold tracking-wide matetees-text-gold flex-1 cursor-pointer" style={{ fontFamily: 'Playfair Display', fontSize: '30px', lineHeight: '36px', letterSpacing: '0.8px' }}>MateTees</span>
+          <span className="text-3xl font-bold tracking-wide matetees-text-gold flex-1 cursor-pointer" style={{ fontFamily: 'Playfair Display', fontSize: '30px', lineHeight: '36px', letterSpacing: '0.8px' }}>Matees</span>
         </a>
       </header>
 
       {/* Main Content */}
-      <main className="flex-1 flex items-center justify-center px-6 pt-8 overflow-y-auto">
+      <main className="flex-1 flex items-center justify-center px-6 pt-4 overflow-y-auto">
         <div className="max-w-4xl w-full text-center space-y-4">
-          <div className="space-y-3">
-            <h1 className="text-4xl md:text-6xl font-serif matetees-text-dark font-bold" style={{ fontFamily: 'Playfair Display', fontWeight: '700' }}>MateTees</h1>
-            <p className="text-lg md:text-xl matetees-text-gold font-normal" style={{ fontFamily: 'Source Sans 3', fontWeight: '400' }}>Revolutionizing Golf, globally</p>
+          <div className="space-y-2">
+            <h1 className="text-lg md:text-2xl lg:text-3xl matetees-text-gold font-semibold text-center">Revolutionizing Social Golf</h1>
+          </div>
+
+          {/* Explanation Section */}
+          <div className="max-w-3xl mx-auto space-y-4 text-left">
+            <p className="text-base matetees-text-dark leading-relaxed">
+              The problem for social golfers is their golfing circle tends to be small, very small - Just 3-4 mates, and, most golfers tend to play the same small handful of courses over and over too.
+            </p>
+            <p className="text-base matetees-text-dark leading-relaxed">
+              All good, we like our mates, we like our courses. . . But what happens when your mates or courses aren't available when you are? You have time to play, you want to play, but have no-one to play with or can't get a tee time!
+            </p>
+            <p className="text-base matetees-text-dark leading-relaxed">
+              The solution = Matees - An app to help people discover more golf mates, more golf courses, more tee times.
+            </p>
+            <p className="text-lg matetees-text-gold font-semibold text-center">
+              Play more golf with Matees!
+            </p>
           </div>
 
           {/* Countdown Timer */}
           <div className="space-y-3">
             <h3 className="text-lg matetees-text-dark font-semibold" style={{ fontFamily: 'Source Sans 3', fontWeight: '600' }}>Launch Countdown</h3>
-            <div className="grid grid-cols-4 gap-3 max-w-sm mx-auto">
-              <Card className="matetees-bg-dark border-[var(--matetees-gold)]">
-                <CardContent className="p-3 text-center">
-                  <div className="text-xl md:text-2xl font-bold matetees-text-gold">{timeLeft.days}</div>
+            <div className="grid grid-cols-4 gap-2 max-w-sm mx-auto">
+              <Card className="matetees-bg-dark border-[var(--matetees-gold)] py-2">
+                <CardContent className="p-1 text-center">
+                  <div className="text-lg md:text-xl font-bold matetees-text-gold">{timeLeft.days}</div>
                   <div className="text-xs matetees-text-ivory">Days</div>
                 </CardContent>
               </Card>
-              <Card className="matetees-bg-dark border-[var(--matetees-gold)]">
-                <CardContent className="p-3 text-center">
-                  <div className="text-xl md:text-2xl font-bold matetees-text-gold">{timeLeft.hours}</div>
+              <Card className="matetees-bg-dark border-[var(--matetees-gold)] py-2">
+                <CardContent className="p-1 text-center">
+                  <div className="text-lg md:text-xl font-bold matetees-text-gold">{timeLeft.hours}</div>
                   <div className="text-xs matetees-text-ivory">Hours</div>
                 </CardContent>
               </Card>
-              <Card className="matetees-bg-dark border-[var(--matetees-gold)]">
-                <CardContent className="p-3 text-center">
-                  <div className="text-xl md:text-2xl font-bold matetees-text-gold">{timeLeft.minutes}</div>
+              <Card className="matetees-bg-dark border-[var(--matetees-gold)] py-2">
+                <CardContent className="p-1 text-center">
+                  <div className="text-lg md:text-xl font-bold matetees-text-gold">{timeLeft.minutes}</div>
                   <div className="text-xs matetees-text-ivory">Minutes</div>
                 </CardContent>
               </Card>
-              <Card className="matetees-bg-dark border-[var(--matetees-gold)]">
-                <CardContent className="p-3 text-center">
-                  <div className="text-xl md:text-2xl font-bold matetees-text-gold">{timeLeft.seconds}</div>
+              <Card className="matetees-bg-dark border-[var(--matetees-gold)] py-2">
+                <CardContent className="p-1 text-center">
+                  <div className="text-lg md:text-xl font-bold matetees-text-gold">{timeLeft.seconds}</div>
                   <div className="text-xs matetees-text-ivory">Seconds</div>
                 </CardContent>
               </Card>
@@ -130,11 +145,11 @@ export default function MateTees() {
           </div>
 
           {/* Email Signup Form */}
-          <Card className="max-w-sm mx-auto matetees-bg-off-white border-[var(--matetees-gold)] shadow-lg">
-            <CardContent className="p-4">
+          <Card className="max-w-sm mx-auto matetees-bg-off-white border-[var(--matetees-gold)] shadow-lg py-3">
+            <CardContent className="p-3">
               {!isSubmitted ? (
-                <form onSubmit={handleSubmit} className="space-y-3">
-                  <h3 className="text-lg font-semibold matetees-text-dark mb-3">Register for Early Access</h3>
+                <form onSubmit={handleSubmit} className="space-y-2">
+                  <h3 className="text-lg font-semibold matetees-text-dark mb-2">Register for Early Access</h3>
 
                   <Input
                     type="email"
@@ -174,7 +189,7 @@ export default function MateTees() {
                   <div>
                     <h3 className="text-xl font-bold matetees-text-dark mb-2">Thank You!</h3>
                     <p className="text-sm matetees-text-dark">
-                      You've been added to our early access list. We'll be in touch soon with updates about MateTees!
+                      You've been added to our early access list. We'll be in touch soon with updates about Matees!
                     </p>
                   </div>
                   <Button
@@ -193,7 +208,7 @@ export default function MateTees() {
       {/* Footer */}
       <footer className="matetees-bg-dark matetees-text-ivory py-4 flex-shrink-0">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <p className="text-xs">© 2025 MateTees. Revolutionizing Golf, globally.</p>
+          <p className="text-xs">© 2025 Matees. Revolutionizing Social Golf.</p>
         </div>
       </footer>
     </div>
