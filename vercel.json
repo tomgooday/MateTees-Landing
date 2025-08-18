@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "destination": "https://www.matetees.app/$1",
+      "permanent": true
+    }
+  ]
+}
