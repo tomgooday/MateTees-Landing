@@ -13,7 +13,7 @@ const nextConfig = {
     return [
       {
         source: '/(.*)',
-        destination: 'https://www.matetees.app/$1',
+        destination: 'https://www.matees.app/$1',
         permanent: true,
       },
     ]
