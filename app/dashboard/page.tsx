@@ -24,30 +24,44 @@ export default function Dashboard() {
   const fetchSubscribers = async () => {
     try {
       setLoading(true)
-      
+
       // Fetch count
       const countResponse = await fetch('/api/subscribers?count=true')
-      const countData = await countResponse.json()
-      setCount(countData.count)
+      const countData = await safeJson(countResponse)
+      setCount(Number(countData?.count) || 0)
 
       // Fetch all subscribers
       const subscribersResponse = await fetch('/api/subscribers')
-      const subscribersData = await subscribersResponse.json()
-      setSubscribers(subscribersData.subscribers)
-    } catch (error) {
-      console.error('Error fetching data:', error)
+      const subscribersData = await safeJson(subscribersResponse)
+      const list: Subscriber[] = Array.isArray(subscribersData?.subscribers) ? subscribersData.subscribers : []
+      setSubscribers(list)
+    } catch (err) {
+      console.error('Error fetching data:', err)
       setError('Failed to load subscribers')
+      setCount(0)
+      setSubscribers([])
     } finally {
       setLoading(false)
+    }
+  }
+
+  const safeJson = async (res: Response) => {
+    try {
+      if (!res.ok) {
+        return {}
+      }
+      return await res.json()
+    } catch {
+      return {}
     }
   }
 
   const setupDatabase = async () => {
     try {
       const response = await fetch('/api/setup-db', { method: 'POST' })
-      const data = await response.json()
-      
-      if (data.success) {
+      const data = await safeJson(response)
+
+      if ((data as any)?.success) {
         alert('Database setup successful!')
         fetchSubscribers()
       } else {
@@ -70,6 +84,10 @@ export default function Dashboard() {
     )
   }
 
+  // Derived metrics with safety
+  const optedIn = subscribers.filter((s) => Boolean(s?.opt_in)).length
+  const optedOut = subscribers.filter((s) => !Boolean(s?.opt_in)).length
+
   return (
     <div className="min-h-screen bg-gray-50 p-6">
       <div className="max-w-6xl mx-auto">
@@ -85,7 +103,7 @@ export default function Dashboard() {
               <CardTitle className="text-sm font-medium">Total Subscribers</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{count}</div>
+              <div className="text-2xl font-bold">{Number.isFinite(count) ? count : 0}</div>
             </CardContent>
           </Card>
 
@@ -94,9 +112,7 @@ export default function Dashboard() {
               <CardTitle className="text-sm font-medium">Opted In</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">
-                {subscribers.filter(s => s.opt_in).length}
-              </div>
+              <div className="text-2xl font-bold">{optedIn}</div>
             </CardContent>
           </Card>
 
@@ -105,9 +121,7 @@ export default function Dashboard() {
               <CardTitle className="text-sm font-medium">Opted Out</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">
-                {subscribers.filter(s => !s.opt_in).length}
-              </div>
+              <div className="text-2xl font-bold">{optedOut}</div>
             </CardContent>
           </Card>
         </div>
@@ -163,10 +177,10 @@ export default function Dashboard() {
                           )}
                         </td>
                         <td className="py-2">
-                          {new Date(subscriber.created_at).toLocaleDateString()}
+                          {subscriber.created_at ? new Date(subscriber.created_at).toLocaleDateString() : '-'}
                         </td>
                         <td className="py-2">
-                          {new Date(subscriber.timestamp).toLocaleDateString()}
+                          {subscriber.timestamp ? new Date(subscriber.timestamp).toLocaleDateString() : '-'}
                         </td>
                       </tr>
                     ))}
