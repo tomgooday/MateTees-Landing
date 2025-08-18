@@ -1,16 +1,16 @@
 import { sql } from '@vercel/postgres'
 
-// Fallback in-memory storage for local development
+// Fallback in-memory storage for when Postgres is not available
 let localSubscribers: Array<{id: number, email: string, opt_in: boolean, timestamp: string, created_at: string}> = []
 let localIdCounter = 1
 
-// Check if we're in development and Postgres is not available
-const isLocalDevelopment = process.env.NODE_ENV === 'development' && !process.env.POSTGRES_URL
+// Check if Postgres is available (works for both development and production)
+const isPostgresAvailable = process.env.POSTGRES_URL && process.env.POSTGRES_URL !== ''
 
 export async function createTables() {
   try {
-    if (isLocalDevelopment) {
-      console.log('✅ Using local development storage (no database setup needed)')
+    if (!isPostgresAvailable) {
+      console.log('✅ Using local storage (no database setup needed)')
       return
     }
     
@@ -32,7 +32,7 @@ export async function createTables() {
 
 export async function addSubscriber(email: string, optIn: boolean) {
   try {
-    if (isLocalDevelopment) {
+    if (!isPostgresAvailable) {
       // Check if email already exists
       const existingIndex = localSubscribers.findIndex(s => s.email === email)
       const now = new Date().toISOString()
@@ -76,7 +76,7 @@ export async function addSubscriber(email: string, optIn: boolean) {
 
 export async function getSubscribers() {
   try {
-    if (isLocalDevelopment) {
+    if (!isPostgresAvailable) {
       return localSubscribers.sort((a, b) => 
         new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
       )
@@ -95,7 +95,7 @@ export async function getSubscribers() {
 
 export async function getSubscriberCount() {
   try {
-    if (isLocalDevelopment) {
+    if (!isPostgresAvailable) {
       return localSubscribers.length.toString()
     }
 
