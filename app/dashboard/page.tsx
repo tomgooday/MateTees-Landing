@@ -16,6 +16,8 @@ export default function Dashboard() {
   const [count, setCount] = useState(0)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState("")
+  const [importing, setImporting] = useState(false)
+  const [importResults, setImportResults] = useState<any>(null)
 
   useEffect(() => {
     fetchSubscribers()
@@ -70,6 +72,59 @@ export default function Dashboard() {
     } catch (error) {
       console.error('Setup error:', error)
       alert('Database setup failed')
+    }
+  }
+
+  const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0]
+    if (!file) return
+
+    try {
+      setImporting(true)
+      setImportResults(null)
+
+      const text = await file.text()
+      const lines = text.split('\n').filter(line => line.trim())
+      
+      // Skip header row if it exists
+      const dataLines = lines[0]?.toLowerCase().includes('email') ? lines.slice(1) : lines
+      
+      const subscribers = dataLines.map(line => {
+        const [email, optIn] = line.split(',').map(field => field.trim())
+        return {
+          email: email || '',
+          optIn: optIn === 'true' || optIn === 'yes' || optIn === '1'
+        }
+      }).filter(sub => sub.email && sub.email.includes('@'))
+
+      if (subscribers.length === 0) {
+        alert('No valid email addresses found in CSV')
+        return
+      }
+
+      const response = await fetch('/api/import-subscribers', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ subscribers })
+      })
+
+      const result = await response.json()
+      setImportResults(result)
+
+      if (result.success) {
+        alert(`Import completed! ${result.results.imported} imported, ${result.results.skipped} skipped.`)
+        fetchSubscribers() // Refresh the list
+      } else {
+        alert('Import failed: ' + result.error)
+      }
+
+    } catch (error) {
+      console.error('Import error:', error)
+      alert('Failed to import CSV file')
+    } finally {
+      setImporting(false)
+      // Reset file input
+      event.target.value = ''
     }
   }
 
@@ -141,6 +196,62 @@ export default function Dashboard() {
             <p className="text-sm text-gray-600 mt-2">
               Run this if you haven't set up the database tables yet.
             </p>
+          </CardContent>
+        </Card>
+
+        {/* Import Subscribers */}
+        <Card className="mb-8">
+          <CardHeader>
+            <CardTitle>Import Subscribers</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Upload CSV File
+                </label>
+                <input
+                  type="file"
+                  accept=".csv"
+                  onChange={handleFileUpload}
+                  disabled={importing}
+                  className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
+                />
+              </div>
+              <div className="text-sm text-gray-600">
+                <p>CSV format: <code>email,optIn</code></p>
+                <p>Example: <code>user@example.com,true</code></p>
+                <p>• First column: Email address (required)</p>
+                <p>• Second column: Opt-in status (true/false, optional, defaults to true)</p>
+              </div>
+              {importing && (
+                <div className="flex items-center text-blue-600">
+                  <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-blue-600 mr-2"></div>
+                  Importing subscribers...
+                </div>
+              )}
+              {importResults && (
+                <div className="bg-gray-50 p-4 rounded-lg">
+                  <h4 className="font-medium mb-2">Import Results:</h4>
+                  <p>Total: {importResults.results?.total}</p>
+                  <p>Imported: {importResults.results?.imported}</p>
+                  <p>Skipped: {importResults.results?.skipped}</p>
+                  {importResults.results?.errors?.length > 0 && (
+                    <div className="mt-2">
+                      <p className="font-medium text-red-600">Errors:</p>
+                      <ul className="text-sm text-red-600 list-disc list-inside">
+                        {importResults.results.errors.slice(0, 5).map((error: string, index: number) => (
+                          <li key={index}>{error}</li>
+                        ))}
+                        {importResults.results.errors.length > 5 && (
+                          <li>... and {importResults.results.errors.length - 5} more errors</li>
+                        )}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
           </CardContent>
         </Card>
 
