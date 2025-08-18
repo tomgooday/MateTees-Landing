@@ -1,9 +1,0 @@
-{
-  "redirects": [
-    {
-      "source": "/(.*)",
-      "destination": "https://www.matees.app/$1",
-      "permanent": true
-    }
-  ]
-}
