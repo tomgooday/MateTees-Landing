@@ -19,6 +19,9 @@ export default function Dashboard() {
   const [importing, setImporting] = useState(false)
   const [importResults, setImportResults] = useState<any>(null)
 
+  // Only show admin tools (DB setup + import) during development by default
+  const showAdminTools = process.env.NODE_ENV !== 'production'
+
   useEffect(() => {
     fetchSubscribers()
   }, [])
@@ -181,79 +184,83 @@ export default function Dashboard() {
           </Card>
         </div>
 
-        {/* Database Setup */}
-        <Card className="mb-8">
-          <CardHeader>
-            <CardTitle>Database Setup</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <button
-              onClick={setupDatabase}
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-            >
-              Setup Database Tables
-            </button>
-            <p className="text-sm text-gray-600 mt-2">
-              Run this if you haven't set up the database tables yet.
-            </p>
-          </CardContent>
-        </Card>
+        {showAdminTools && (
+          <>
+            {/* Database Setup */}
+            <Card className="mb-8">
+              <CardHeader>
+                <CardTitle>Database Setup</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <button
+                  onClick={setupDatabase}
+                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                >
+                  Setup Database Tables
+                </button>
+                <p className="text-sm text-gray-600 mt-2">
+                  Run this if you haven't set up the database tables yet.
+                </p>
+              </CardContent>
+            </Card>
 
-        {/* Import Subscribers */}
-        <Card className="mb-8">
-          <CardHeader>
-            <CardTitle>Import Subscribers</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Upload CSV File
-                </label>
-                <input
-                  type="file"
-                  accept=".csv"
-                  onChange={handleFileUpload}
-                  disabled={importing}
-                  className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
-                />
-              </div>
-              <div className="text-sm text-gray-600">
-                <p>CSV format: <code>email,optIn</code></p>
-                <p>Example: <code>user@example.com,true</code></p>
-                <p>• First column: Email address (required)</p>
-                <p>• Second column: Opt-in status (true/false, optional, defaults to true)</p>
-              </div>
-              {importing && (
-                <div className="flex items-center text-blue-600">
-                  <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-blue-600 mr-2"></div>
-                  Importing subscribers...
-                </div>
-              )}
-              {importResults && (
-                <div className="bg-gray-50 p-4 rounded-lg">
-                  <h4 className="font-medium mb-2">Import Results:</h4>
-                  <p>Total: {importResults.results?.total}</p>
-                  <p>Imported: {importResults.results?.imported}</p>
-                  <p>Skipped: {importResults.results?.skipped}</p>
-                  {importResults.results?.errors?.length > 0 && (
-                    <div className="mt-2">
-                      <p className="font-medium text-red-600">Errors:</p>
-                      <ul className="text-sm text-red-600 list-disc list-inside">
-                        {importResults.results.errors.slice(0, 5).map((error: string, index: number) => (
-                          <li key={index}>{error}</li>
-                        ))}
-                        {importResults.results.errors.length > 5 && (
-                          <li>... and {importResults.results.errors.length - 5} more errors</li>
-                        )}
-                      </ul>
+            {/* Import Subscribers */}
+            <Card className="mb-8">
+              <CardHeader>
+                <CardTitle>Import Subscribers</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Upload CSV File
+                    </label>
+                    <input
+                      type="file"
+                      accept=".csv"
+                      onChange={handleFileUpload}
+                      disabled={importing}
+                      className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
+                    />
+                  </div>
+                  <div className="text-sm text-gray-600">
+                    <p>CSV format: <code>email,optIn</code></p>
+                    <p>Example: <code>user@example.com,true</code></p>
+                    <p>• First column: Email address (required)</p>
+                    <p>• Second column: Opt-in status (true/false, optional, defaults to true)</p>
+                  </div>
+                  {importing && (
+                    <div className="flex items-center text-blue-600">
+                      <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-blue-600 mr-2"></div>
+                      Importing subscribers...
+                    </div>
+                  )}
+                  {importResults && (
+                    <div className="bg-gray-50 p-4 rounded-lg">
+                      <h4 className="font-medium mb-2">Import Results:</h4>
+                      <p>Total: {importResults.results?.total}</p>
+                      <p>Imported: {importResults.results?.imported}</p>
+                      <p>Skipped: {importResults.results?.skipped}</p>
+                      {importResults.results?.errors?.length > 0 && (
+                        <div className="mt-2">
+                          <p className="font-medium text-red-600">Errors:</p>
+                          <ul className="text-sm text-red-600 list-disc list-inside">
+                            {importResults.results.errors.slice(0, 5).map((error: string, index: number) => (
+                              <li key={index}>{error}</li>
+                            ))}
+                            {importResults.results.errors.length > 5 && (
+                              <li>... and {importResults.results.errors.length - 5} more errors</li>
+                            )}
+                          </ul>
+                        </div>
+                      )}
                     </div>
                   )}
                 </div>
-              )}
-            </div>
-          </CardContent>
-        </Card>
+              </CardContent>
+            </Card>
+          </>
+        )}
 
         {/* Subscribers List */}
         <Card>
