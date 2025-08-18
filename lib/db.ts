@@ -1,7 +1,19 @@
 import { sql } from '@vercel/postgres'
 
+// Fallback in-memory storage for local development
+let localSubscribers: Array<{id: number, email: string, opt_in: boolean, timestamp: string, created_at: string}> = []
+let localIdCounter = 1
+
+// Check if we're in development and Postgres is not available
+const isLocalDevelopment = process.env.NODE_ENV === 'development' && !process.env.POSTGRES_URL
+
 export async function createTables() {
   try {
+    if (isLocalDevelopment) {
+      console.log('✅ Using local development storage (no database setup needed)')
+      return
+    }
+    
     await sql`
       CREATE TABLE IF NOT EXISTS subscribers (
         id SERIAL PRIMARY KEY,
@@ -20,6 +32,33 @@ export async function createTables() {
 
 export async function addSubscriber(email: string, optIn: boolean) {
   try {
+    if (isLocalDevelopment) {
+      // Check if email already exists
+      const existingIndex = localSubscribers.findIndex(s => s.email === email)
+      const now = new Date().toISOString()
+      
+      if (existingIndex >= 0) {
+        // Update existing subscriber
+        localSubscribers[existingIndex] = {
+          ...localSubscribers[existingIndex],
+          opt_in: optIn,
+          timestamp: now
+        }
+        return localSubscribers[existingIndex]
+      } else {
+        // Add new subscriber
+        const newSubscriber = {
+          id: localIdCounter++,
+          email,
+          opt_in: optIn,
+          timestamp: now,
+          created_at: now
+        }
+        localSubscribers.push(newSubscriber)
+        return newSubscriber
+      }
+    }
+
     const result = await sql`
       INSERT INTO subscribers (email, opt_in)
       VALUES (${email}, ${optIn})
@@ -37,6 +76,12 @@ export async function addSubscriber(email: string, optIn: boolean) {
 
 export async function getSubscribers() {
   try {
+    if (isLocalDevelopment) {
+      return localSubscribers.sort((a, b) => 
+        new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+      )
+    }
+
     const result = await sql`
       SELECT * FROM subscribers 
       ORDER BY created_at DESC
@@ -50,6 +95,10 @@ export async function getSubscribers() {
 
 export async function getSubscriberCount() {
   try {
+    if (isLocalDevelopment) {
+      return localSubscribers.length.toString()
+    }
+
     const result = await sql`
       SELECT COUNT(*) as count FROM subscribers
     `
