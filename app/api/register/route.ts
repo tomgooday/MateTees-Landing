@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
-
-// Database storage (you can replace this with your preferred database)
-const subscribers: Array<{email: string, optIn: boolean, timestamp: string}> = []
+import { addSubscriber } from '@/lib/db'
 
 export async function POST(request: NextRequest) {
   try {
@@ -13,9 +11,9 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Invalid email address' }, { status: 400 })
     }
 
-    // Store to database (replace with your actual database)
-    subscribers.push({ email, optIn, timestamp })
-    console.log('Stored subscriber:', { email, optIn, timestamp })
+    // Store to Vercel Postgres database
+    const subscriber = await addSubscriber(email, optIn)
+    console.log('Stored subscriber:', subscriber)
 
     // Send email notification to info@matetees.co.au
     await sendNotificationEmail(email, optIn)
