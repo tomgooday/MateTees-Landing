@@ -108,3 +108,28 @@ export async function getSubscriberCount() {
     throw error
   }
 }
+
+export async function deleteSubscriber(email: string) {
+  const isPostgresAvailable = process.env.POSTGRES_URL && process.env.POSTGRES_URL !== ''
+
+  if (!isPostgresAvailable) {
+    // Local fallback
+    const index = localSubscribers.findIndex(sub => sub.email === email)
+    if (index !== -1) {
+      localSubscribers.splice(index, 1)
+      return true
+    }
+    return false
+  }
+
+  try {
+    const result = await sql`
+      DELETE FROM subscribers 
+      WHERE email = ${email}
+    `
+    return result.rowCount > 0
+  } catch (error) {
+    console.error('Error deleting subscriber:', error)
+    return false
+  }
+}

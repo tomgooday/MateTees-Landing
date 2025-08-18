@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { getSubscribers, getSubscriberCount } from '@/lib/db'
+import { getSubscribers, getSubscriberCount, deleteSubscriber } from '@/lib/db'
 import { corsHeaders } from '@/lib/cors'
 
 export async function OPTIONS() {
@@ -27,5 +27,21 @@ export async function GET(request: NextRequest) {
   } catch (error) {
     console.error('Error fetching subscribers:', error)
     return NextResponse.json({ subscribers: [], fallback: true }, { headers: corsHeaders() })
+  }
+}
+
+export async function DELETE(request: NextRequest) {
+  try {
+    const { email } = await request.json()
+    
+    if (!email) {
+      return NextResponse.json({ error: 'Email is required' }, { status: 400, headers: corsHeaders() })
+    }
+
+    const result = await deleteSubscriber(email)
+    return NextResponse.json({ success: true, deleted: result }, { headers: corsHeaders() })
+  } catch (error) {
+    console.error('Error deleting subscriber:', error)
+    return NextResponse.json({ error: 'Failed to delete subscriber' }, { status: 500, headers: corsHeaders() })
   }
 }
