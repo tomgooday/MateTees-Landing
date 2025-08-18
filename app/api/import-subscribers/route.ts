@@ -1,12 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { addSubscriber } from '@/lib/db'
+import { corsHeaders } from '@/lib/cors'
+
+export async function OPTIONS() {
+  return new NextResponse(null, { headers: corsHeaders() })
+}
 
 export async function POST(request: NextRequest) {
   try {
     const { subscribers } = await request.json()
 
     if (!Array.isArray(subscribers)) {
-      return NextResponse.json({ error: 'Invalid data format. Expected array of subscribers.' }, { status: 400 })
+      return NextResponse.json({ error: 'Invalid data format. Expected array of subscribers.' }, { status: 400, headers: corsHeaders() })
     }
 
     const results = {
@@ -18,18 +23,15 @@ export async function POST(request: NextRequest) {
 
     for (const subscriber of subscribers) {
       try {
-        // Validate required fields
         if (!subscriber.email || typeof subscriber.email !== 'string') {
           results.errors.push(`Invalid email for subscriber: ${JSON.stringify(subscriber)}`)
           results.skipped++
           continue
         }
 
-        // Set default values for missing fields
         const email = subscriber.email.trim().toLowerCase()
         const optIn = subscriber.optIn !== undefined ? Boolean(subscriber.optIn) : true
 
-        // Import the subscriber
         await addSubscriber(email, optIn)
         results.imported++
         
@@ -45,10 +47,10 @@ export async function POST(request: NextRequest) {
       success: true,
       message: `Import completed. ${results.imported} imported, ${results.skipped} skipped.`,
       results
-    })
+    }, { headers: corsHeaders() })
 
   } catch (error) {
     console.error('Import error:', error)
-    return NextResponse.json({ error: 'Failed to import subscribers' }, { status: 500 })
+    return NextResponse.json({ error: 'Failed to import subscribers' }, { status: 500, headers: corsHeaders() })
   }
 }
