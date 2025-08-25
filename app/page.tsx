@@ -73,7 +73,7 @@ export default function MateTees() {
   }
 
   return (
-    <div className="h-screen flex flex-col matetees-bg-ivory overflow-hidden">
+    <div className="min-h-screen flex flex-col matetees-bg-ivory">
       {/* Header */}
       <header className="flex items-center px-8 py-4 border-b border-[var(--matetees-gold)] shadow-xl bg-[var(--matetees-dark-green)] flex-shrink-0">
         <Image 
@@ -91,7 +91,7 @@ export default function MateTees() {
       </header>
 
       {/* Main Content */}
-      <main className="flex-1 flex items-center justify-center px-6 pt-4 overflow-y-auto">
+      <main className="flex-1 flex items-center justify-center px-6 pt-4 pb-8 overflow-y-auto">
         <div className="max-w-4xl w-full text-center space-y-4">
           <div className="space-y-2">
             <h1 className="text-lg md:text-2xl lg:text-3xl matetees-text-gold font-semibold text-center">Revolutionizing Social Golf</h1>
