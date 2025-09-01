@@ -91,7 +91,7 @@ export default function MateTees() {
       </header>
 
       {/* Main Content */}
-      <main className="flex-1 flex items-center justify-center px-6 pt-4 pb-8 overflow-y-auto">
+      <main className="flex-1 flex items-center justify-center px-6 pt-4 pb-8">
         <div className="max-w-4xl w-full text-center space-y-4">
           <div className="space-y-2">
             <h1 className="text-lg md:text-2xl lg:text-3xl matetees-text-gold font-semibold text-center">Revolutionizing Social Golf</h1>
