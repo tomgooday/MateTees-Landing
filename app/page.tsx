@@ -81,14 +81,16 @@ export default function MateTees() {
       {/* Header */}
       <header className="flex items-center px-8 py-4 border-b border-[var(--matetees-light-green)] shadow-xl bg-[var(--matetees-black)] flex-shrink-0">
         <div className="flex items-center">
-          <div className="mr-4 w-14 h-14 bg-white rounded-full flex items-center justify-center">
-            <span className="text-2xl font-bold text-[var(--matetees-light-green)]" style={{ fontFamily: 'Rubik, sans-serif', fontWeight: '700' }}>M</span>
-          </div>
           <a href="/dashboard">
-            <div className="flex flex-col">
-              <span className="text-3xl font-bold tracking-wide text-white flex-1 cursor-pointer" style={{ fontFamily: 'Rubik, sans-serif', fontWeight: '700', fontSize: '30px', lineHeight: '36px', letterSpacing: '0.8px', fontStyle: 'italic' }}>Matees</span>
-              <span className="text-sm font-medium text-white" style={{ fontFamily: 'Rubik, sans-serif', fontWeight: '400', fontSize: '12px', letterSpacing: '0.5px', fontStyle: 'italic' }}>GOLF > CONNECTED</span>
-            </div>
+            <Image 
+              alt="Matees Logo" 
+              width={120} 
+              height={40} 
+              decoding="async" 
+              className="cursor-pointer" 
+              src="/Matees logo all white_RGB.png" 
+              style={{ color: 'transparent' }}
+            />
           </a>
         </div>
       </header>
