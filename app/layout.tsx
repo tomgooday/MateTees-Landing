@@ -16,9 +16,9 @@ export const metadata: Metadata = {
     "The future of golf social networking. Connect with golfers worldwide, discover new courses, and find more tee times.",
   generator: "v0.app",
   icons: {
-    icon: '/favicon.svg',
-    shortcut: '/favicon.svg',
-    apple: '/favicon.svg',
+    icon: '/favicon.png',
+    shortcut: '/favicon.png',
+    apple: '/favicon.png',
   },
 }
 
