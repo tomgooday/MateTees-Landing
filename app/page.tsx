@@ -80,8 +80,8 @@ export default function MateTees() {
     <div className="min-h-screen flex flex-col matetees-bg-white">
       {/* Header */}
       <header className="flex items-center px-8 py-4 border-b border-[var(--matetees-light-green)] shadow-xl bg-[var(--matetees-black)] flex-shrink-0">
-        <div className="flex items-center">
-          <a href="/dashboard">
+        <div className="flex items-center justify-center w-full">
+          <a href="https://www.matees.app">
             <Image 
               alt="Matees Logo" 
               width={120} 
