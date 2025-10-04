@@ -51,40 +51,48 @@ export async function POST(request: NextRequest) {
 
     // Test email content
     const mailOptions = {
-      from: process.env.FROM_EMAIL || 'noreply@matetees.com.au',
+      from: process.env.FROM_EMAIL || 'noreply@matees.com.au',
       to: testEmail,
-      subject: 'MateTees Email Debug Test',
+      subject: 'Matees Email Debug Test',
       html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <div style="background-color: #13211c; color: #f4f1e8; padding: 20px; text-align: center;">
-            <h1 style="margin: 0; color: #c9ae6e;">MateTees</h1>
-            <p style="margin: 10px 0 0 0; color: #c9ae6e;">Email Debug Test</p>
+        <div style="font-family: 'Rubik', Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+          <div style="background-color: #000f08; color: #ffffff; padding: 20px; text-align: center;">
+            <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 10px;">
+              <div style="width: 40px; height: 40px; background-color: #ffffff; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
+                <span style="font-size: 20px; font-weight: bold; color: #318735; font-family: 'Rubik', Arial, sans-serif;">M</span>
+              </div>
+              <div>
+                <h1 style="margin: 0; color: #ffffff; font-family: 'Rubik', Arial, sans-serif; font-weight: bold; font-size: 28px; font-style: italic;">Matees</h1>
+                <p style="margin: 0; color: #ffffff; font-family: 'Rubik', Arial, sans-serif; font-size: 12px; font-weight: 400; font-style: italic;">GOLF > CONNECTED</p>
+              </div>
+            </div>
+            <p style="margin: 10px 0 0 0; color: #318735; font-family: 'Rubik', Arial, sans-serif; font-weight: bold;">Email Debug Test</p>
           </div>
           
-          <div style="padding: 20px; background-color: #f4f1e8;">
-            <h2 style="color: #13211c; margin-top: 0;">🔍 Email Debug Test</h2>
+          <div style="padding: 20px; background-color: #ffffff;">
+            <h2 style="color: #000f08; margin-top: 0; font-family: 'Rubik', Arial, sans-serif; font-weight: bold;">🔍 Email Debug Test</h2>
             
-            <p style="color: #13211c; line-height: 1.6;">
+            <p style="color: #000f08; line-height: 1.6; font-family: 'Rubik', Arial, sans-serif; font-weight: 400;">
               This is a debug test email to verify that the confirmation email functionality is working correctly.
             </p>
             
-            <div style="background-color: white; padding: 15px; border-radius: 5px; margin: 15px 0; border-left: 4px solid #4caf50;">
-              <h3 style="color: #13211c; margin-top: 0;">Debug Information:</h3>
-              <ul style="color: #13211c; line-height: 1.6;">
+            <div style="background-color: #ffffff; padding: 15px; border-radius: 5px; margin: 15px 0; border: 1px solid #318735;">
+              <h3 style="color: #000f08; margin-top: 0; font-family: 'Rubik', Arial, sans-serif; font-weight: bold;">Debug Information:</h3>
+              <ul style="color: #000f08; line-height: 1.6; font-family: 'Rubik', Arial, sans-serif; font-weight: 400;">
                 <li><strong>Test Email:</strong> ${testEmail}</li>
-                <li><strong>From Email:</strong> ${process.env.FROM_EMAIL || 'noreply@matetees.com.au'}</li>
+                <li><strong>From Email:</strong> ${process.env.FROM_EMAIL || 'noreply@matees.com.au'}</li>
                 <li><strong>SMTP Host:</strong> ${process.env.SMTP_HOST || 'smtp.sendgrid.net'}</li>
                 <li><strong>Test Time:</strong> ${new Date().toLocaleString()}</li>
               </ul>
             </div>
             
-            <p style="color: #13211c; line-height: 1.6;">
+            <p style="color: #000f08; line-height: 1.6; font-family: 'Rubik', Arial, sans-serif; font-weight: 400;">
               If you received this email, the confirmation email functionality is working correctly!
             </p>
           </div>
           
-          <div style="background-color: #13211c; color: #f4f1e8; padding: 15px; text-align: center; font-size: 12px;">
-            <p style="margin: 0;">© 2025 MateTees. Revolutionizing Golf, globally.</p>
+          <div style="background-color: #000f08; color: #ffffff; padding: 15px; text-align: center; font-size: 12px;">
+            <p style="margin: 0; font-family: 'Rubik', Arial, sans-serif;">2025 Matees. Golf > Connected.</p>
           </div>
         </div>
       `
