@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
       SMTP_PORT: process.env.SMTP_PORT || '587 (default)',
       SMTP_USER: process.env.SMTP_USER || 'apikey (default)',
       SMTP_PASS: process.env.SMTP_PASS ? '✅ Set' : '❌ Missing',
-      FROM_EMAIL: process.env.FROM_EMAIL || 'noreply@matetees.com.au (default)',
+      FROM_EMAIL: process.env.FROM_EMAIL || 'noreply@matees.com.au (default)',
     }
 
     console.log('🔍 Debug: Environment check:', envCheck)
@@ -132,7 +132,7 @@ export async function POST(request: NextRequest) {
         SMTP_PORT: process.env.SMTP_PORT || '587 (default)',
         SMTP_USER: process.env.SMTP_USER || 'apikey (default)',
         SMTP_PASS: process.env.SMTP_PASS ? '✅ Set' : '❌ Missing',
-        FROM_EMAIL: process.env.FROM_EMAIL || 'noreply@matetees.com.au (default)',
+        FROM_EMAIL: process.env.FROM_EMAIL || 'noreply@matees.com.au (default)',
       }
     }, { status: 500 })
   }
