@@ -4,84 +4,93 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* MateTees Brand Colors - Exact matches from matetees.com.au */
-  --matetees-dark-green: #13211c;
-  --matetees-light-green: #1a332a;
-  --matetees-gold: #c9ae6e;
-  --matetees-gold-hover: #b89d5d;
+  /* Matees Brand Colors - Updated to match brand guidelines */
+  --matetees-black: #000f08;
+  --matetees-light-green: #318735;
+  --matetees-dark-green: #1A6025;
   --matetees-white: #ffffff;
-  --matetees-off-white: #f0f0f0;
-  --matetees-ivory: #f4f1e8;
+  
+  /* Tee Colors */
+  --matetees-blue: #00aeef;
+  --matetees-pink: #ec008c;
+  --matetees-yellow: #fff200;
+  --matetees-red: #d2232a;
+  
+  /* Tee Shadow Colors */
+  --matetees-blue-shadow: #008cc0;
+  --matetees-pink-shadow: #d2108a;
+  --matetees-yellow-shadow: #fddd00;
+  --matetees-red-shadow: #ae2024;
 
-  /* Updated color scheme using MateTees brand colors */
-  --background: var(--matetees-dark-green);
-  --foreground: var(--matetees-ivory);
-  --card: var(--matetees-ivory);
-  --card-foreground: var(--matetees-dark-green);
-  --popover: var(--matetees-ivory);
-  --popover-foreground: var(--matetees-dark-green);
-  --primary: var(--matetees-gold);
-  --primary-foreground: var(--matetees-dark-green);
-  --secondary: var(--matetees-light-green);
-  --secondary-foreground: var(--matetees-gold);
-  --muted: var(--matetees-off-white);
-  --muted-foreground: var(--matetees-dark-green);
-  --accent: var(--matetees-gold);
-  --accent-foreground: var(--matetees-dark-green);
+  /* Updated color scheme using Matees brand colors */
+  --background: var(--matetees-white);
+  --foreground: var(--matetees-black);
+  --card: var(--matetees-white);
+  --card-foreground: var(--matetees-black);
+  --popover: var(--matetees-white);
+  --popover-foreground: var(--matetees-black);
+  --primary: var(--matetees-light-green);
+  --primary-foreground: var(--matetees-white);
+  --secondary: var(--matetees-dark-green);
+  --secondary-foreground: var(--matetees-white);
+  --muted: var(--matetees-white);
+  --muted-foreground: var(--matetees-black);
+  --accent: var(--matetees-light-green);
+  --accent-foreground: var(--matetees-white);
   --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: var(--matetees-ivory);
-  --border: var(--matetees-gold);
-  --input: var(--matetees-ivory);
-  --ring: var(--matetees-gold);
-  --chart-1: var(--matetees-gold);
-  --chart-2: var(--matetees-light-green);
-  --chart-3: var(--matetees-dark-green);
-  --chart-4: var(--matetees-ivory);
-  --chart-5: var(--matetees-off-white);
+  --destructive-foreground: var(--matetees-white);
+  --border: var(--matetees-light-green);
+  --input: var(--matetees-white);
+  --ring: var(--matetees-light-green);
+  --chart-1: var(--matetees-light-green);
+  --chart-2: var(--matetees-dark-green);
+  --chart-3: var(--matetees-black);
+  --chart-4: var(--matetees-white);
+  --chart-5: var(--matetees-blue);
   --radius: 0.625rem;
   --sidebar: var(--matetees-dark-green);
-  --sidebar-foreground: var(--matetees-ivory);
-  --sidebar-primary: var(--matetees-gold);
+  --sidebar-foreground: var(--matetees-white);
+  --sidebar-primary: var(--matetees-light-green);
   --sidebar-primary-foreground: var(--matetees-dark-green);
   --sidebar-accent: var(--matetees-light-green);
-  --sidebar-accent-foreground: var(--matetees-gold);
-  --sidebar-border: var(--matetees-gold);
-  --sidebar-ring: var(--matetees-gold);
+  --sidebar-accent-foreground: var(--matetees-light-green);
+  --sidebar-border: var(--matetees-light-green);
+  --sidebar-ring: var(--matetees-light-green);
 }
 
 .dark {
   --background: var(--matetees-dark-green);
-  --foreground: var(--matetees-ivory);
+  --foreground: var(--matetees-white);
   --card: var(--matetees-dark-green);
-  --card-foreground: var(--matetees-ivory);
+  --card-foreground: var(--matetees-white);
   --popover: var(--matetees-dark-green);
-  --popover-foreground: var(--matetees-ivory);
-  --primary: var(--matetees-gold);
+  --popover-foreground: var(--matetees-white);
+  --primary: var(--matetees-light-green);
   --primary-foreground: var(--matetees-dark-green);
   --secondary: var(--matetees-light-green);
-  --secondary-foreground: var(--matetees-gold);
+  --secondary-foreground: var(--matetees-light-green);
   --muted: var(--matetees-light-green);
-  --muted-foreground: var(--matetees-gold);
-  --accent: var(--matetees-gold);
+  --muted-foreground: var(--matetees-light-green);
+  --accent: var(--matetees-light-green);
   --accent-foreground: var(--matetees-dark-green);
   --destructive: oklch(0.396 0.141 25.723);
-  --destructive-foreground: var(--matetees-ivory);
-  --border: var(--matetees-gold);
+  --destructive-foreground: var(--matetees-white);
+  --border: var(--matetees-light-green);
   --input: var(--matetees-dark-green);
-  --ring: var(--matetees-gold);
-  --chart-1: var(--matetees-gold);
+  --ring: var(--matetees-light-green);
+  --chart-1: var(--matetees-light-green);
   --chart-2: var(--matetees-light-green);
   --chart-3: var(--matetees-dark-green);
-  --chart-4: var(--matetees-ivory);
+  --chart-4: var(--matetees-white);
   --chart-5: var(--matetees-off-white);
   --sidebar: var(--matetees-dark-green);
-  --sidebar-foreground: var(--matetees-ivory);
-  --sidebar-primary: var(--matetees-gold);
+  --sidebar-foreground: var(--matetees-white);
+  --sidebar-primary: var(--matetees-light-green);
   --sidebar-primary-foreground: var(--matetees-dark-green);
   --sidebar-accent: var(--matetees-light-green);
-  --sidebar-accent-foreground: var(--matetees-gold);
-  --sidebar-border: var(--matetees-gold);
-  --sidebar-ring: var(--matetees-gold);
+  --sidebar-accent-foreground: var(--matetees-light-green);
+  --sidebar-border: var(--matetees-light-green);
+  --sidebar-ring: var(--matetees-light-green);
 }
 
 @theme inline {
@@ -121,9 +130,8 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
-  /* Added custom font variables for MateTees branding */
-  --font-serif: var(--font-playfair);
-  --font-sans: var(--font-source-sans);
+  /* Added custom font variables for Matees branding */
+  --font-sans: var(--font-rubik);
 }
 
 @layer base {
@@ -135,50 +143,46 @@
   }
 }
 
-/* MateTees specific utility classes */
-.matetees-bg-dark {
+/* Matees specific utility classes */
+.matetees-bg-black {
+  background-color: var(--matetees-black);
+}
+
+.matetees-bg-dark-green {
   background-color: var(--matetees-dark-green);
 }
 
-.matetees-bg-light {
+.matetees-bg-light-green {
   background-color: var(--matetees-light-green);
 }
 
-.matetees-bg-gold {
-  background-color: var(--matetees-gold);
+.matetees-bg-white {
+  background-color: var(--matetees-white);
 }
 
-.matetees-bg-off-white {
-  background-color: var(--matetees-off-white);
+.matetees-text-black {
+  color: var(--matetees-black);
 }
 
-.matetees-bg-ivory {
-  background-color: var(--matetees-ivory);
-}
-
-.matetees-text-dark {
+.matetees-text-dark-green {
   color: var(--matetees-dark-green);
 }
 
-.matetees-text-gold {
-  color: var(--matetees-gold);
+.matetees-text-light-green {
+  color: var(--matetees-light-green);
 }
 
 .matetees-text-white {
   color: var(--matetees-white);
 }
 
-.matetees-text-ivory {
-  color: var(--matetees-ivory);
-}
-
 .matetees-btn-primary {
-  background-color: var(--matetees-gold);
-  color: var(--matetees-dark-green);
+  background-color: var(--matetees-light-green);
+  color: var(--matetees-white);
 }
 
 .matetees-btn-primary:hover {
-  background-color: var(--matetees-gold-hover);
+  background-color: var(--matetees-dark-green);
 }
 
 .matetees-btn-secondary {
@@ -187,7 +191,8 @@
 }
 
 .matetees-btn-secondary:hover {
-  background-color: rgba(26, 51, 42, 0.1);
+  background-color: var(--matetees-light-green);
+  color: var(--matetees-white);
 }
 
 .matetees-btn-white {
@@ -206,12 +211,12 @@
 }
 
 .matetees-card-light {
-  background-color: var(--matetees-off-white);
-  color: var(--matetees-dark-green);
+  background-color: var(--matetees-white);
+  color: var(--matetees-black);
 }
 
 .matetees-icon-gold {
-  color: var(--matetees-gold);
+  color: var(--matetees-light-green);
 }
 
 .matetees-icon-white {
@@ -219,13 +224,13 @@
 }
 
 .matetees-badge-gold {
-  background-color: var(--matetees-gold);
-  color: var(--matetees-dark-green);
+  background-color: var(--matetees-light-green);
+  color: var(--matetees-white);
 }
 
 .matetees-badge-outline-gold {
-  border-color: var(--matetees-gold);
-  color: var(--matetees-gold);
+  border-color: var(--matetees-light-green);
+  color: var(--matetees-light-green);
 }
 
 .matetees-badge-outline-white {
@@ -239,7 +244,7 @@
 }
 
 .matetees-link {
-  color: var(--matetees-gold);
+  color: var(--matetees-light-green);
 }
 
 .matetees-link-white {
@@ -247,16 +252,16 @@
 }
 
 .matetees-gradient {
-  background: linear-gradient(to right, var(--matetees-dark-green), var(--matetees-gold));
+  background: linear-gradient(to right, var(--matetees-dark-green), var(--matetees-light-green));
 }
 
 .matetees-cta {
-  background-color: var(--matetees-gold);
-  color: var(--matetees-dark-green);
+  background-color: var(--matetees-light-green);
+  color: var(--matetees-white);
 }
 
 .matetees-cta:hover {
-  background-color: var(--matetees-gold-hover);
+  background-color: var(--matetees-dark-green);
 }
 
 .matetees-text-cta {
