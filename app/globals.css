@@ -319,3 +319,7 @@
 .animate-slide-down {
   animation: slideDown 0.8s ease-out 0.2s both;
 }
+
+.animate-slide-up-delay-2 {
+  animation: slideUp 0.8s ease-out 0.7s both;
+}

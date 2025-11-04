@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Card, CardContent } from "@/components/ui/card"
 import Image from "next/image"
-import { Users, MapPin, Calendar, Trophy, TrendingUp, Heart, Menu, X } from "lucide-react"
+import { Users, MapPin, Calendar, Trophy, TrendingUp, Heart, Menu, X, Apple, Smartphone } from "lucide-react"
 
 export default function PostLaunch() {
   const [email, setEmail] = useState("")
@@ -224,6 +224,30 @@ export default function PostLaunch() {
             <p className="text-2xl md:text-3xl text-white font-medium max-w-3xl mx-auto drop-shadow-lg animate-slide-up-delay" style={{ fontFamily: 'Rubik, sans-serif', textShadow: '0 2px 8px rgba(0,0,0,0.5)' }}>
               Play more golf with Matees!
             </p>
+            
+            {/* Download CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6 animate-slide-up-delay-2">
+              <Button 
+                className="bg-white text-[var(--matetees-black)] hover:bg-white/90 font-bold px-6 py-6 text-base shadow-2xl flex items-center gap-2 group" 
+                style={{ fontFamily: 'Rubik, sans-serif' }}
+              >
+                <Apple className="w-6 h-6 group-hover:scale-110 transition-transform" />
+                <div className="text-left">
+                  <div className="text-xs opacity-80">Download on the</div>
+                  <div className="text-lg font-bold leading-tight">App Store</div>
+                </div>
+              </Button>
+              <Button 
+                className="bg-[var(--matetees-light-green)] text-white hover:bg-[var(--matetees-dark-green)] font-bold px-6 py-6 text-base shadow-2xl flex items-center gap-2 group" 
+                style={{ fontFamily: 'Rubik, sans-serif' }}
+              >
+                <Smartphone className="w-6 h-6 group-hover:scale-110 transition-transform" />
+                <div className="text-left">
+                  <div className="text-xs opacity-90">Get it on</div>
+                  <div className="text-lg font-bold leading-tight">Google Play</div>
+                </div>
+              </Button>
+            </div>
           </div>
         </div>
 
