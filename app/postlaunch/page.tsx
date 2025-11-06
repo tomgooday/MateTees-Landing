@@ -209,12 +209,12 @@ export default function PostLaunch() {
           <div className="relative z-10 text-center space-y-6 px-6 animate-fade-in">
             <div className="flex justify-center mb-4 animate-slide-down">
               <Image 
-                alt="Golf Tees" 
-                width={100} 
-                height={100} 
+                alt="Matees Icon" 
+                width={150} 
+                height={150} 
                 decoding="async" 
                 className="object-contain drop-shadow-2xl" 
-                src="/Matees tees_RGB.png" 
+                src="/Matees lcon white_RGB.svg" 
                 style={{ color: 'transparent' }}
               />
             </div>
