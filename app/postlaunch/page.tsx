@@ -89,7 +89,7 @@ export default function PostLaunch() {
     { label: 'About Us', id: 'about-section' },
     { label: 'Why Matees', id: 'benefits-section' },
     { label: 'How It Works', id: 'how-it-works-section' },
-    { label: 'Get Started', id: 'cta-section' },
+    { label: 'Support', id: 'support-section' },
   ]
 
   const benefits = [
@@ -615,6 +615,48 @@ export default function PostLaunch() {
             </Card>
           </div>
 
+          {/* Support Section */}
+          <div 
+            id="support-section"
+            data-animate
+            className={`max-w-4xl mx-auto transition-all duration-1000 ${
+              visibleSections.has('support-section') 
+                ? 'opacity-100 translate-y-0' 
+                : 'opacity-0 translate-y-10'
+            }`}
+          >
+            <Card className="border-2 border-[var(--matetees-light-green)] shadow-xl">
+              <CardContent className="p-8 md:p-12 text-center space-y-6">
+                <div className="w-16 h-16 mx-auto rounded-full bg-[var(--matetees-light-green)] flex items-center justify-center">
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
+                  </svg>
+                </div>
+                <h2 className="text-2xl md:text-3xl font-bold text-[var(--matetees-black)]" style={{ fontFamily: 'Rubik, sans-serif' }}>
+                  Need Help or Have Questions?
+                </h2>
+                <p className="text-lg text-[var(--matetees-black)] max-w-2xl mx-auto" style={{ fontFamily: 'Rubik, sans-serif', fontWeight: '400' }}>
+                  Our support team is here to help! Whether you have questions about the app, need technical assistance, or want to provide feedback, we're just a message away.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+                  <a href="/support">
+                    <Button className="bg-[var(--matetees-light-green)] hover:bg-[var(--matetees-dark-green)] text-white font-bold px-8 py-6 text-lg" style={{ fontFamily: 'Rubik, sans-serif' }}>
+                      Visit Support Center
+                    </Button>
+                  </a>
+                  <a href="mailto:info@matees.com.au">
+                    <Button className="bg-white border-2 border-[var(--matetees-light-green)] text-[var(--matetees-light-green)] hover:bg-[var(--matetees-light-green)] hover:text-white font-bold px-8 py-6 text-lg" style={{ fontFamily: 'Rubik, sans-serif' }}>
+                      Email Us
+                    </Button>
+                  </a>
+                </div>
+                <p className="text-sm text-[var(--matetees-black)]/70" style={{ fontFamily: 'Rubik, sans-serif' }}>
+                  Contact us at: <a href="mailto:info@matees.com.au" className="text-[var(--matetees-light-green)] hover:underline font-semibold">info@matees.com.au</a>
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+
         </div>
       </main>
 
@@ -626,13 +668,16 @@ export default function PostLaunch() {
               © 2025 Matees. Golf > Connected.
             </p>
             <div className="flex gap-6">
-              <a href="#" className="text-sm hover:text-[var(--matetees-light-green)] transition-colors" style={{ fontFamily: 'Rubik, sans-serif' }}>
+              <a href="/support" className="text-sm hover:text-[var(--matetees-light-green)] transition-colors" style={{ fontFamily: 'Rubik, sans-serif' }}>
+                Support
+              </a>
+              <a href="https://www.matees.com.au/privacy" target="_blank" rel="noopener noreferrer" className="text-sm hover:text-[var(--matetees-light-green)] transition-colors" style={{ fontFamily: 'Rubik, sans-serif' }}>
                 Privacy Policy
               </a>
-              <a href="#" className="text-sm hover:text-[var(--matetees-light-green)] transition-colors" style={{ fontFamily: 'Rubik, sans-serif' }}>
+              <a href="https://www.matees.com.au/terms" target="_blank" rel="noopener noreferrer" className="text-sm hover:text-[var(--matetees-light-green)] transition-colors" style={{ fontFamily: 'Rubik, sans-serif' }}>
                 Terms of Service
               </a>
-              <a href="#" className="text-sm hover:text-[var(--matetees-light-green)] transition-colors" style={{ fontFamily: 'Rubik, sans-serif' }}>
+              <a href="mailto:info@matees.com.au" className="text-sm hover:text-[var(--matetees-light-green)] transition-colors" style={{ fontFamily: 'Rubik, sans-serif' }}>
                 Contact
               </a>
             </div>
