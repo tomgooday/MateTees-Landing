@@ -212,7 +212,7 @@ export default function Support() {
                 <AccordionItem 
                   key={index} 
                   value={`item-${index}`}
-                  className="border-2 border-[var(--matetees-light-green)] rounded-lg px-6 bg-white"
+                  className={`border-2 !border-b-2 border-[var(--matetees-light-green)] rounded-lg px-6 bg-white ${index === faqs.length - 1 ? 'mb-4' : ''}`}
                 >
                   <AccordionTrigger className="text-left font-bold text-[var(--matetees-black)] hover:text-[var(--matetees-light-green)]" style={{ fontFamily: 'Rubik, sans-serif' }}>
                     {faq.question}

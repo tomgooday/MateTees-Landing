@@ -350,7 +350,7 @@ export default function PostLaunch() {
                 <CardContent className="p-8 text-center space-y-4">
                   <div className="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-[var(--matetees-light-green)] bg-gray-200">
                     <Image
-                      src="/placeholder-user.jpg"
+                      src="/Matt.jpeg"
                       alt="Matthew Baraclough"
                       width={128}
                       height={128}
@@ -374,7 +374,7 @@ export default function PostLaunch() {
                 <CardContent className="p-8 text-center space-y-4">
                   <div className="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-[var(--matetees-light-green)] bg-gray-200">
                     <Image
-                      src="/placeholder-user.jpg"
+                      src="/Tom.jpeg"
                       alt="Tom Gooday"
                       width={128}
                       height={128}
