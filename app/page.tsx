@@ -23,8 +23,8 @@ export default function MateTees() {
   })
 
   useEffect(() => {
-    // Target date: November 9th, 2025 3pm Sydney time (AEDT)
-    const targetDate = new Date("2025-11-09T15:00:00+11:00")
+    // Target date: November 24th, 2025 9pm Sydney time (AEDT)
+    const targetDate = new Date("2025-11-24T21:00:00+11:00")
 
     const timer = setInterval(() => {
       const now = new Date().getTime()
