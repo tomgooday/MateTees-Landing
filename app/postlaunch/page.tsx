@@ -345,26 +345,26 @@ export default function PostLaunch() {
             </p>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-              {/* Matthew Baraclough */}
+              {/* Matt Barraclough */}
               <Card className="border-2 border-[var(--matetees-light-green)] hover:shadow-xl transition-all duration-300">
                 <CardContent className="p-8 text-center space-y-4">
                   <div className="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-[var(--matetees-light-green)] bg-gray-200">
                     <Image
                       src="/Matt.jpeg"
-                      alt="Matthew Baraclough"
+                      alt="Matt Barraclough"
                       width={128}
                       height={128}
                       className="object-cover w-full h-full"
                     />
                   </div>
                   <h3 className="text-2xl font-bold text-[var(--matetees-black)]" style={{ fontFamily: 'Rubik, sans-serif' }}>
-                    Matthew Baraclough
+                    Matt Barraclough
                   </h3>
                   <p className="text-[var(--matetees-dark-green)] font-semibold" style={{ fontFamily: 'Rubik, sans-serif' }}>
                     Co-Founder
                   </p>
                   <p className="text-[var(--matetees-black)] leading-relaxed" style={{ fontFamily: 'Rubik, sans-serif', fontWeight: '400' }}>
-                    Matthew is a passionate golfer who understands the challenges of finding playing partners and exploring new courses. With a background in technology and community building, he co-founded Matees to help golfers connect and play more rounds.
+                    Matt is a passionate golfer who understands the challenges of finding playing partners and exploring new courses. With a background in technology and community building, he co-founded Matees to help golfers connect and play more rounds.
                   </p>
                 </CardContent>
               </Card>
