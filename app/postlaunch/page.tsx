@@ -85,7 +85,7 @@ export default function PostLaunch() {
   }
 
   const navLinks = [
-    { label: 'Origin Story', id: 'origin-section' },
+    // { label: 'Origin Story', id: 'origin-section' }, // Hidden until video is ready
     { label: 'About Us', id: 'about-section' },
     { label: 'Why Matees', id: 'benefits-section' },
     { label: 'How It Works', id: 'how-it-works-section' },
@@ -289,8 +289,8 @@ export default function PostLaunch() {
             </Card>
           </div>
 
-          {/* Origin Story Section */}
-          <div 
+          {/* Origin Story Section - Hidden until video is ready */}
+          {/* <div 
             id="origin-section"
             data-animate
             className={`max-w-4xl mx-auto transition-all duration-1000 ${
@@ -307,7 +307,6 @@ export default function PostLaunch() {
             </p>
             <Card className="border-2 border-[var(--matetees-light-green)] shadow-xl overflow-hidden">
               <CardContent className="p-0">
-                {/* Video Placeholder - Replace with actual video */}
                 <div className="relative aspect-video bg-[var(--matetees-dark-green)] flex items-center justify-center">
                   <div className="text-center space-y-4 p-8">
                     <div className="w-20 h-20 mx-auto rounded-full bg-[var(--matetees-light-green)] flex items-center justify-center">
@@ -325,7 +324,7 @@ export default function PostLaunch() {
                 </div>
               </CardContent>
             </Card>
-          </div>
+          </div> */}
 
           {/* About Us Section */}
           <div 
