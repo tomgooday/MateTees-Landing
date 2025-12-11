@@ -227,17 +227,24 @@ export default function PostLaunch() {
             
             {/* Download CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6 animate-slide-up-delay-2">
-              <Button 
-                className="bg-white text-[var(--matetees-black)] hover:bg-white/90 font-bold px-6 py-6 text-base shadow-2xl flex items-center gap-2 group" 
-                style={{ fontFamily: 'Rubik, sans-serif' }}
+              <a 
+                href="https://apps.apple.com/us/app/matees-golf-connected/id6754836106"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <Apple className="w-6 h-6 group-hover:scale-110 transition-transform" />
-                <div className="text-left">
-                  <div className="text-xs opacity-80">Download on the</div>
-                  <div className="text-lg font-bold leading-tight">App Store</div>
-                </div>
-              </Button>
-              <Button 
+                <Button 
+                  className="bg-white text-[var(--matetees-black)] hover:bg-white/90 font-bold px-6 py-6 text-base shadow-2xl flex items-center gap-2 group" 
+                  style={{ fontFamily: 'Rubik, sans-serif' }}
+                >
+                  <Apple className="w-6 h-6 group-hover:scale-110 transition-transform" />
+                  <div className="text-left">
+                    <div className="text-xs opacity-80">Download on the</div>
+                    <div className="text-lg font-bold leading-tight">App Store</div>
+                  </div>
+                </Button>
+              </a>
+              {/* Google Play button hidden for now */}
+              {/* <Button 
                 className="bg-[var(--matetees-light-green)] text-white hover:bg-[var(--matetees-dark-green)] font-bold px-6 py-6 text-base shadow-2xl flex items-center gap-2 group" 
                 style={{ fontFamily: 'Rubik, sans-serif' }}
               >
@@ -246,7 +253,7 @@ export default function PostLaunch() {
                   <div className="text-xs opacity-90">Get it on</div>
                   <div className="text-lg font-bold leading-tight">Google Play</div>
                 </div>
-              </Button>
+              </Button> */}
             </div>
           </div>
         </div>
@@ -518,12 +525,19 @@ export default function PostLaunch() {
                 </p>
                 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-                  <Button className="bg-white text-[var(--matetees-light-green)] hover:bg-[var(--matetees-white)]/90 font-bold px-8 py-6 text-lg" style={{ fontFamily: 'Rubik, sans-serif' }}>
-                    Download on iOS
-                  </Button>
-                  <Button className="bg-[var(--matetees-dark-green)] text-white hover:bg-[var(--matetees-black)] font-bold px-8 py-6 text-lg" style={{ fontFamily: 'Rubik, sans-serif' }}>
+                  <a 
+                    href="https://apps.apple.com/us/app/matees-golf-connected/id6754836106"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Button className="bg-white text-[var(--matetees-light-green)] hover:bg-[var(--matetees-white)]/90 font-bold px-8 py-6 text-lg" style={{ fontFamily: 'Rubik, sans-serif' }}>
+                      Download on iOS
+                    </Button>
+                  </a>
+                  {/* Android button hidden for now */}
+                  {/* <Button className="bg-[var(--matetees-dark-green)] text-white hover:bg-[var(--matetees-black)] font-bold px-8 py-6 text-lg" style={{ fontFamily: 'Rubik, sans-serif' }}>
                     Download on Android
-                  </Button>
+                  </Button> */}
                 </div>
               </CardContent>
             </Card>
