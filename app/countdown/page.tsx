@@ -235,7 +235,7 @@ export default function MateTees() {
       {/* Footer */}
       <footer className="bg-[var(--matetees-black)] text-white py-4 flex-shrink-0">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <p className="text-xs" style={{ fontFamily: 'Rubik, sans-serif' }}>2025 Matees. Golf > Connected.</p>
+          <p className="text-xs" style={{ fontFamily: 'Rubik, sans-serif' }}>2025 Matees. Golf &gt; Connected.</p>
         </div>
       </footer>
     </div>
