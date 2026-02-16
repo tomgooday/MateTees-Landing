@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Card, CardContent } from "@/components/ui/card"
 import Image from "next/image"
-import { Users, MapPin, Calendar, Trophy, TrendingUp, Heart, Menu, X, Apple, Smartphone } from "lucide-react"
+import { Users, MapPin, Calendar, Trophy, TrendingUp, Heart, Menu, X } from "lucide-react"
 
 export default function PostLaunch() {
   const [email, setEmail] = useState("")
@@ -226,34 +226,35 @@ export default function PostLaunch() {
             </p>
             
             {/* Download CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6 animate-slide-up-delay-2">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6 animate-slide-up-delay-2">
               <a 
                 href="https://apps.apple.com/us/app/matees-golf-connected/id6754836106"
                 target="_blank"
                 rel="noopener noreferrer"
+                className="transition-transform hover:scale-105"
               >
-                <Button 
-                  className="bg-white text-[var(--matetees-black)] hover:bg-white/90 font-bold px-6 py-6 text-base shadow-2xl flex items-center gap-2 group" 
-                  style={{ fontFamily: 'Rubik, sans-serif' }}
-                >
-                  <Apple className="w-6 h-6 group-hover:scale-110 transition-transform" />
-                  <div className="text-left">
-                    <div className="text-xs opacity-80">Download on the</div>
-                    <div className="text-lg font-bold leading-tight">App Store</div>
-                  </div>
-                </Button>
+                <Image 
+                  src="/app-store-badge.svg"
+                  alt="Download on the App Store"
+                  width={200}
+                  height={60}
+                  className="h-[60px] w-auto drop-shadow-2xl"
+                />
               </a>
-              {/* Google Play button hidden for now */}
-              {/* <Button 
-                className="bg-[var(--matetees-light-green)] text-white hover:bg-[var(--matetees-dark-green)] font-bold px-6 py-6 text-base shadow-2xl flex items-center gap-2 group" 
-                style={{ fontFamily: 'Rubik, sans-serif' }}
+              <a 
+                href="https://play.google.com/store/apps/details?id=com.matees.matees_mobile"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-transform hover:scale-105"
               >
-                <Smartphone className="w-6 h-6 group-hover:scale-110 transition-transform" />
-                <div className="text-left">
-                  <div className="text-xs opacity-90">Get it on</div>
-                  <div className="text-lg font-bold leading-tight">Google Play</div>
-                </div>
-              </Button> */}
+                <Image 
+                  src="/google-play-badge.svg"
+                  alt="Get it on Google Play"
+                  width={200}
+                  height={60}
+                  className="h-[60px] w-auto drop-shadow-2xl"
+                />
+              </a>
             </div>
           </div>
         </div>
@@ -524,20 +525,35 @@ export default function PostLaunch() {
                   Join thousands of golfers who are already expanding their golfing horizons with Matees.
                 </p>
                 
-                <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+                <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
                   <a 
                     href="https://apps.apple.com/us/app/matees-golf-connected/id6754836106"
                     target="_blank"
                     rel="noopener noreferrer"
+                    className="transition-transform hover:scale-105"
                   >
-                    <Button className="bg-white text-[var(--matetees-light-green)] hover:bg-[var(--matetees-white)]/90 font-bold px-8 py-6 text-lg" style={{ fontFamily: 'Rubik, sans-serif' }}>
-                      Download on iOS
-                    </Button>
+                    <Image 
+                      src="/app-store-badge.svg"
+                      alt="Download on the App Store"
+                      width={200}
+                      height={60}
+                      className="h-[60px] w-auto drop-shadow-2xl"
+                    />
                   </a>
-                  {/* Android button hidden for now */}
-                  {/* <Button className="bg-[var(--matetees-dark-green)] text-white hover:bg-[var(--matetees-black)] font-bold px-8 py-6 text-lg" style={{ fontFamily: 'Rubik, sans-serif' }}>
-                    Download on Android
-                  </Button> */}
+                  <a 
+                    href="https://play.google.com/store/apps/details?id=com.matees.matees_mobile"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition-transform hover:scale-105"
+                  >
+                    <Image 
+                      src="/google-play-badge.svg"
+                      alt="Get it on Google Play"
+                      width={200}
+                      height={60}
+                      className="h-[60px] w-auto drop-shadow-2xl"
+                    />
+                  </a>
                 </div>
               </CardContent>
             </Card>
@@ -678,7 +694,7 @@ export default function PostLaunch() {
         <div className="max-w-6xl mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm" style={{ fontFamily: 'Rubik, sans-serif' }}>
-              © 2025 Matees. Golf &gt; Connected.
+              © 2026 Matees. Golf &gt; Connected.
             </p>
             <div className="flex gap-6">
               <a href="/support" className="text-sm hover:text-[var(--matetees-light-green)] transition-colors" style={{ fontFamily: 'Rubik, sans-serif' }}>

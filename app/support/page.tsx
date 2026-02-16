@@ -394,7 +394,7 @@ export default function Support() {
         <div className="max-w-6xl mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm" style={{ fontFamily: 'Rubik, sans-serif' }}>
-              © 2025 Matees. Golf &gt; Connected.
+              © 2026 Matees. Golf &gt; Connected.
             </p>
             <div className="flex gap-6">
               <a href="/support" className="text-sm hover:text-[var(--matetees-light-green)] transition-colors" style={{ fontFamily: 'Rubik, sans-serif' }}>
